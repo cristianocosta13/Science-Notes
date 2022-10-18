@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sciencenotes/domain/people.dart';
+import 'package:sciencenotes/domain/users.dart';
 import 'package:sciencenotes/assets/colors/custom_colors.dart';
 import 'package:sciencenotes/pages/about_page.dart';
 import 'package:sciencenotes/pages/enter_page.dart';
@@ -10,10 +10,10 @@ import 'package:sciencenotes/pages/statistics_page.dart';
 import 'package:sciencenotes/widgets/card_functions.dart';
 
 class ListProfile extends StatefulWidget {
-  final People people;
+  final Users user;
   const ListProfile({
     Key? key,
-    required this.people,
+    required this.user,
   }) : super(key: key);
 
   @override
@@ -50,7 +50,7 @@ class _ListProfileState extends State<ListProfile> {
                       ),
                     ),
                     Text(
-                      widget.people.name,
+                      widget.user.name,
                       style: const TextStyle(
                           fontSize: 22,
                           color: CustomColors.textColor,
@@ -72,7 +72,7 @@ class _ListProfileState extends State<ListProfile> {
                       ),
                     ),
                     Text(
-                      widget.people.user,
+                      widget.user.username,
                       style: const TextStyle(
                           fontSize: 22,
                           color: CustomColors.textColor,
@@ -94,7 +94,7 @@ class _ListProfileState extends State<ListProfile> {
                       ),
                     ),
                     Text(
-                      widget.people.email,
+                      widget.user.email,
                       style: const TextStyle(
                           fontSize: 22,
                           color: CustomColors.textColor,
@@ -116,7 +116,7 @@ class _ListProfileState extends State<ListProfile> {
                       ),
                     ),
                     Text(
-                      widget.people.birthdate,
+                      widget.user.birthdate,
                       style: const TextStyle(
                           fontSize: 22,
                           color: CustomColors.textColor,

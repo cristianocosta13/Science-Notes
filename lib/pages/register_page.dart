@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:sciencenotes/assets/colors/custom_colors.dart';
 import 'package:sciencenotes/pages/enter_page.dart';
 //import 'package:sciencenotes/pages/home_page.dart';
+import 'package:sciencenotes/data/people_dao.dart';
+import 'package:sciencenotes/domain/users.dart';
+
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -101,7 +104,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                       const SizedBox(height: 8),
                       TextFormField(
-                        keyboardType: TextInputType.datetime,
+                        // keyboardType: TextInputType.datetime,
                         decoration: const InputDecoration(
                           icon: Icon(CupertinoIcons.calendar, color: CustomColors.appeButtonColor),
                           labelText: 'Data de nascimento',
@@ -125,7 +128,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                       const SizedBox(height: 8),
                       TextFormField(
-                        keyboardType: TextInputType.emailAddress,
+                        // keyboardType: TextInputType.emailAddress,
                         decoration: const InputDecoration(
                           icon: Icon(CupertinoIcons.envelope_fill, color: CustomColors.appeButtonColor),
                           labelText: 'Email',
@@ -196,17 +199,48 @@ class _RegisterPageState extends State<RegisterPage> {
       ),
     );
   }
-  void onPressedButton() {
+  void onPressedButton() async{
+    // if (_formKey.currentState!.validate()) {
+    //   Navigator.pushAndRemoveUntil(
+    //     context,
+    //     MaterialPageRoute(
+    //       builder: (context) {
+    //         return const EnterPage();
+    //       },
+    //     ),
+    //     (Route<dynamic> route) => false,
+    //   );
+    // }
     if (_formKey.currentState!.validate()) {
-      Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(
-          builder: (context) {
-            return const EnterPage();
-          },
-        ),
-        (Route<dynamic> route) => false,
-      );
+      String userDigitado = userController.text;
+      String passwordDigitado = passwordController.text;
+      String email = emailController.text;
+      String data = nascimentController.text;
+      String name = nameController.text;
+
+      Users user = Users(email: email, name: name, image: " ", password: passwordDigitado, username: userDigitado, birthdate: data);
+      bool variavel = await UserDao().exclusividade(username: userDigitado);
+      if(variavel){
+        showSnackBar("Nome de usuário já existente.");
+      }else{
+        await UserDao().salvarUser(user: user);
+        showSnackBar('Usuário foi salvo com sucesso!');
+        Navigator.pop(context);
+      }
+    } else {
+      showSnackBar("Erro na validação");
     }
+  }
+
+  showSnackBar(String msg) {
+    final snackBar = SnackBar(
+      behavior: SnackBarBehavior.floating,
+      margin: const EdgeInsets.symmetric(
+        vertical: 80,
+        horizontal: 32,
+      ),
+      content: Text(msg),
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }

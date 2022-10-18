@@ -1,18 +1,18 @@
-import 'package:sciencenotes/data/DBusers.dart';
-import 'package:sciencenotes/domain/users.dart';
+import 'package:sciencenotes/data/DBmissions.dart';
+import 'package:sciencenotes/domain/missions.dart';
 import 'package:flutter/material.dart';
 import 'package:sciencenotes/assets/colors/custom_colors.dart';
-import 'package:sciencenotes/widgets/list_folks.dart';
+import 'package:sciencenotes/widgets/missions_card.dart';
 
-class listPeoplePage extends StatefulWidget {
-  const listPeoplePage({Key? key}) : super(key: key);
+class listMissionsPage extends StatefulWidget {
+  const listMissionsPage({Key? key}) : super(key: key);
 
   @override
-  _listPeoplePageState createState() => _listPeoplePageState();
+  _listMissionsPageState createState() => _listMissionsPageState();
 }
 
-class _listPeoplePageState extends State<listPeoplePage> {
-  Future<List<Users>> list = DB.getUsers();
+class _listMissionsPageState extends State<listMissionsPage> {
+  Future<List<Mission>> list = DBmissions.getMissions();
 
   @override
   Widget build(BuildContext context) {
@@ -34,15 +34,15 @@ class _listPeoplePageState extends State<listPeoplePage> {
   }
 
   buildListView(){
-    return FutureBuilder<List<Users>>(
+    return FutureBuilder<List<Mission>>(
       future: list,
       builder: (context, snapshot){
         if(snapshot.hasData){
-          List<Users> list = snapshot.data ?? [];
+          List<Mission> list = snapshot.data ?? [];
           return ListView.builder(
             itemCount: list.length,
             itemBuilder: (BuildContext context, int index){
-              return ListFolks(user: list[index]);
+              return ListMissions(mission: list[index]);
             },
           );
         }

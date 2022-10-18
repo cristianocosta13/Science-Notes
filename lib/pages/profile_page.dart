@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sciencenotes/data/BDpeople.dart';
-import 'package:sciencenotes/domain/people.dart';
+import 'package:sciencenotes/data/DBusers.dart';
+import 'package:sciencenotes/domain/users.dart';
 import 'package:sciencenotes/widgets/list_profile.dart';
 
 class ProfilePage extends StatefulWidget{
@@ -10,7 +10,7 @@ class ProfilePage extends StatefulWidget{
   State<ProfilePage> createState() => _ProfilePageState();
 }
 class _ProfilePageState extends State<ProfilePage>{
-  Future<List<People>> list = BD.getPeople();
+  Future<List<Users>> list = DB.getUsers();
   @override
   Widget build(BuildContext context){
     return Center(
@@ -21,15 +21,15 @@ class _ProfilePageState extends State<ProfilePage>{
     );
   }
   buildListView(){
-    return FutureBuilder<List<People>>(
+    return FutureBuilder<List<Users>>(
         future: list,
         builder: (context, snapshot){
           if(snapshot.hasData){
-            List<People> list = snapshot.data ?? [];
+            List<Users> list = snapshot.data ?? [];
             return ListView.builder(
               itemCount: list.length,
               itemBuilder: (BuildContext context, int index){
-                return ListProfile(people: list[index]);
+                return ListProfile(user: list[index]);
               },
             );
           }

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:sciencenotes/domain/people.dart';
+import 'package:sciencenotes/domain/users.dart';
 import 'package:sciencenotes/pages/profile_page.dart';
 
 class ListFolks extends StatefulWidget {
-  final People people;
+  final Users user;
   const ListFolks({
     Key? key,
-    required this.people,
+    required this.user,
   }) : super(key: key);
 
   @override
@@ -36,7 +36,7 @@ class _ListFolksState extends State<ListFolks> {
                       ),
                     );
                   },
-                  child: Text(widget.people.name,
+                  child: Text(widget.user.name,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 24,
@@ -46,7 +46,7 @@ class _ListFolksState extends State<ListFolks> {
                   ),
                 ),
                 Text(
-                  widget.people.email,
+                  widget.user.email,
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 24,
@@ -72,7 +72,7 @@ class _ListFolksState extends State<ListFolks> {
           height: 90,
           width: 90,
           child: Image.network(
-            widget.people.image,
+            widget.user.image,
             fit: BoxFit.cover,
           ),
         ),
