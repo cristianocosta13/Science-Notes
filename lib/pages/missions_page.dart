@@ -1,5 +1,3 @@
-import 'package:sciencenotes/data/DBmissions.dart';
-import 'package:sciencenotes/domain/missions.dart';
 import 'package:flutter/material.dart';
 import 'package:sciencenotes/assets/colors/custom_colors.dart';
 import 'package:sciencenotes/widgets/missions_card.dart';
@@ -12,7 +10,6 @@ class listMissionsPage extends StatefulWidget {
 }
 
 class _listMissionsPageState extends State<listMissionsPage> {
-  Future<List<Mission>> list = DBmissions.getMissions();
 
   @override
   Widget build(BuildContext context) {
@@ -34,20 +31,14 @@ class _listMissionsPageState extends State<listMissionsPage> {
   }
 
   buildListView(){
-    return FutureBuilder<List<Mission>>(
-      future: list,
-      builder: (context, snapshot){
-        if(snapshot.hasData){
-          List<Mission> list = snapshot.data ?? [];
-          return ListView.builder(
-            itemCount: list.length,
-            itemBuilder: (BuildContext context, int index){
-              return ListMissions(mission: list[index]);
-            },
-          );
-        }
-        return Center(child: const CircularProgressIndicator());
-      }
-    );
+    return ListView(
+      children: [
+        Mission(title: "Constância", description: "Estude 3 horas todos os dias ao longo da semana.", icon: Icons.access_time),
+        Mission(title: "Pratique", description: "Faça 20 questões por dia.", icon: Icons.assignment_rounded),
+        Mission(title: "Flashcards", description: "Faça flashcards dos assuntos que está estudando.", icon: Icons.drive_file_move_outline),
+        Mission(title: "Planner", description: "Organize suas tarefas diárias.", icon: Icons.calendar_month),
+        Mission(title: "Simulados", description: "Faça simulados interdiscuplinares com frequência e treine tudo o que aprendeu.", icon: Icons.text_increase_sharp),
+      ],
+    );     
   }
 }

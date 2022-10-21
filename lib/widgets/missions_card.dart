@@ -1,18 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:sciencenotes/domain/missions.dart';
 
-class ListMissions extends StatefulWidget {
-  final Mission mission;
-  const ListMissions({
+
+class Mission extends StatefulWidget {
+  final String title;
+  final String description;
+  final IconData icon;
+
+  const Mission({
     Key? key,
-    required this.mission,
+    required this.title,
+    required this.description,
+    required this.icon,
   }) : super(key: key);
 
   @override
-  State<ListMissions> createState() => _ListMissionsState();
+  State<Mission> createState() => _MissionCardState();
 }
 
-class _ListMissionsState extends State<ListMissions> {
+
+
+class _MissionCardState extends State<Mission> {
+  @override
+
   Widget build(BuildContext context){
     return InkWell(
       child: Card(
@@ -28,9 +37,9 @@ class _ListMissionsState extends State<ListMissions> {
               const SizedBox(height: 24),
               Row(
                 children: [
-                  Icon(widget.mission.icon),
+                  Icon(widget.icon),
                   const SizedBox(width: 12),
-                  Text(widget.mission.title,
+                  Text(widget.title,
                     style: TextStyle(
                       fontFamily: 'AmacticSC-Regular',
                       fontWeight: FontWeight.bold,
@@ -40,7 +49,7 @@ class _ListMissionsState extends State<ListMissions> {
                 ],
               ),
               const SizedBox(height: 18),
-              Text(widget.mission.description,
+              Text(widget.description,
                 style: TextStyle(
                       fontFamily: 'Abel-Regular',
                       fontSize: 20,

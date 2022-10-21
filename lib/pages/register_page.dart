@@ -1,10 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-//import 'package:sciencenotes/domain/content.dart';
 import 'package:sciencenotes/assets/colors/custom_colors.dart';
 import 'package:sciencenotes/pages/enter_page.dart';
-//import 'package:sciencenotes/pages/home_page.dart';
-import 'package:sciencenotes/data/people_dao.dart';
+import 'package:sciencenotes/data/user_dao.dart';
 import 'package:sciencenotes/domain/users.dart';
 
 
@@ -104,7 +102,6 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                       const SizedBox(height: 8),
                       TextFormField(
-                        // keyboardType: TextInputType.datetime,
                         decoration: const InputDecoration(
                           icon: Icon(CupertinoIcons.calendar, color: CustomColors.appeButtonColor),
                           labelText: 'Data de nascimento',
@@ -128,7 +125,6 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                       const SizedBox(height: 8),
                       TextFormField(
-                        // keyboardType: TextInputType.emailAddress,
                         decoration: const InputDecoration(
                           icon: Icon(CupertinoIcons.envelope_fill, color: CustomColors.appeButtonColor),
                           labelText: 'Email',
@@ -200,30 +196,32 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
   void onPressedButton() async{
-    // if (_formKey.currentState!.validate()) {
-    //   Navigator.pushAndRemoveUntil(
-    //     context,
-    //     MaterialPageRoute(
-    //       builder: (context) {
-    //         return const EnterPage();
-    //       },
-    //     ),
-    //     (Route<dynamic> route) => false,
-    //   );
-    // }
     if (_formKey.currentState!.validate()) {
-      String userDigitado = userController.text;
-      String passwordDigitado = passwordController.text;
+      String user = userController.text;
+      String password = passwordController.text;
       String email = emailController.text;
       String data = nascimentController.text;
       String name = nameController.text;
 
-      Users user = Users(email: email, name: name, image: " ", password: passwordDigitado, username: userDigitado, birthdate: data);
-      bool variavel = await UserDao().exclusividade(username: userDigitado);
-      if(variavel){
-        showSnackBar("Nome de usuário já existente.");
+      // int id = 2;
+      // bool antigoID = await UserDao().antigoID(id: id);
+      // while(antigoID){
+      //   id++;
+      //   antigoID = await UserDao().antigoID(id: id);
+      // }
+      
+       int id = await UserDao().listIDs();
+       id++;
+
+      Users newUser = Users(id: id, email: email, name: name, image: " ", password: password, username: user, birthdate: data);
+      bool exclusivityUser = await UserDao().exclusivityUser(username: user);
+      bool exclusivityEmail = await UserDao().exclusivityEmail(email: email);
+      if(exclusivityUser){
+        showSnackBar("Nome de usuário já cadastrado.");
+      }else if (exclusivityEmail){
+        showSnackBar("Email de usuário já cadastrado.");
       }else{
-        await UserDao().salvarUser(user: user);
+        await UserDao().saveUser(user: newUser);
         showSnackBar('Usuário foi salvo com sucesso!');
         Navigator.pop(context);
       }
@@ -243,4 +241,14 @@ class _RegisterPageState extends State<RegisterPage> {
     );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
+
+  // gerarID() async{
+  //   int id = 2;
+  //   bool antigoID = await UserDao().antigoID(id: id);
+  //   while(antigoID){
+  //     id++;
+  //     antigoID = await UserDao().antigoID(id: id);
+  //   }
+  //   return id;
+  // }
 }

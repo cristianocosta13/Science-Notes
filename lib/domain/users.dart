@@ -5,6 +5,7 @@ class Users {
   late String name;
   late String username;
   late String birthdate;
+  late int id;
 
 
   Users({
@@ -14,6 +15,7 @@ class Users {
     required this.name,
     required this.username,
     required this.birthdate,
+    required this.id,
   });
 
   Users.fromJson(Map<String, dynamic> json) {
@@ -23,6 +25,7 @@ class Users {
     image = json['image'];
     name = json['name'];
     email = json['email'];
+    id = json['id'];
   }
 
   Map<String, dynamic> toJson() {
@@ -33,6 +36,7 @@ class Users {
     data['image'] = image;
     data['name'] = name;
     data['email'] = email;
+    data['id'] = id;
     return data;
   }
 }

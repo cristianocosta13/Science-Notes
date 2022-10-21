@@ -2,15 +2,16 @@ import 'package:sciencenotes/domain/users.dart';
 
 class DB {
   static List<Users> list = [
-    // Users(
-    //   image:
-    //   'https://static.thenounproject.com/png/448730-200.png',
-    //   name: 'Julia Ferreira',
-    //   email: 'jfo3@aluno.ifal.edu.br',
-    //   password: '12345',
-    //   username: 'fjuliaaf',
-    //   birthdate: '21/04/2005',
-    // ),
+    Users(
+      image:
+      'https://static.thenounproject.com/png/448730-200.png',
+      name: 'Julia Ferreira',
+      email: 'jfo3@aluno.ifal.edu.br',
+      password: '12345',
+      username: 'fjuliaaf',
+      birthdate: '21/04/2005',
+      id: 1,
+    ),
     // People(
     //   image:
     //   'https://static.thenounproject.com/png/448730-200.png',
