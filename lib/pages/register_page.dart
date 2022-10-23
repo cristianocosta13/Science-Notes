@@ -15,7 +15,7 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
 
-  TextEditingController userController = TextEditingController(); //fazer um controlador para cada espaço de resposta
+  TextEditingController userController = TextEditingController(); 
   TextEditingController nameController = TextEditingController();
   TextEditingController nascimentController = TextEditingController();
   TextEditingController emailController = TextEditingController();
