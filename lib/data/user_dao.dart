@@ -2,7 +2,6 @@ import 'package:sqflite/sqflite.dart';
 import 'package:sciencenotes/domain/users.dart';
 import 'package:sciencenotes/data/DBhelper.dart';
 
-
 class UserDao {
 
   Future<void> saveUser({required Users user}) async {
@@ -63,7 +62,7 @@ class UserDao {
     return lista;
   }
 
-   Future<int> listIDs() async{
+  Future<int> listIDs() async{
     int id=0;
     Helper dbHelper = Helper();
     Database db = await dbHelper.initDB();

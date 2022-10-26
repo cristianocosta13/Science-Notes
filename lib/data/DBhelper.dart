@@ -5,12 +5,12 @@ import 'package:sqflite/sqflite.dart';
 class Helper {
   initDB() async {
     String databasePath = await getDatabasesPath();
-    String path = join(databasePath, "user.db");
+    String path = join(databasePath, "scienceNotes.db");
     Database database = await openDatabase(
       path,
       version: 1,
       onCreate: onCreate,
-      onUpgrade: onUpgrade,
+      // onUpgrade: onUpgrade,
     );
 
     return database;
@@ -27,9 +27,17 @@ class Helper {
         "'21/04/2005');";
     await db.execute(sql);
 
+    sql = 'create table MESSAGES (message varchar(150));';
+    await db.execute(sql);
+
+    sql = "INSERT INTO MESSAGES (message) "
+        "VALUES ('Primeira mensagem do fórum.');";
+    await db.execute(sql);
+
   }
 
-  Future<void> onUpgrade(Database db, int oldVersion, int newVersion) async {
+  // Future<void> onUpgrade(Database db, int oldVersion, int newVersion) async {
     
-  }
+  // }
 }
+
