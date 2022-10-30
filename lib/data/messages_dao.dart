@@ -7,14 +7,14 @@ class MessageDao {
     Helper dbHelper = Helper();
     Database db = await dbHelper.initDB();
 
-    await db.insert('messages', message.toJson());
+    await db.insert('message', message.toJson());
   }
 
   Future<List<Messages>> listMessages() async {
     Helper dbHelper = Helper();
     Database db = await dbHelper.initDB();
     String sql = 'SELECT * '
-                 'FROM messages;';
+                 'FROM message;';
     final result = await db.rawQuery(sql);
 
     List<Messages> lista = <Messages>[];

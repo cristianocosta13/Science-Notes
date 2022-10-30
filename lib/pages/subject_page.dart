@@ -10,6 +10,8 @@ import 'package:sciencenotes/pages/questions_page.dart';
 import 'package:sciencenotes/pages/profile_page.dart';
 import 'package:sciencenotes/domain/content.dart';
 import 'package:sciencenotes/pages/about_page.dart';
+import 'package:sciencenotes/pages/missions_page.dart';
+import 'package:sciencenotes/pages/forum_page.dart';
 
 class SubjectPage extends StatefulWidget {
   final Content content;
@@ -61,6 +63,16 @@ class _SubjectPageState extends State<SubjectPage> {
                 leading: const Icon(Icons.favorite_border),
                 title: Text("Favourites"),
                 onTap: () => print('clicou')
+            ),
+            ListTile(
+                leading: const Icon(Icons.task_alt_rounded),
+                title: Text("Missions"),
+                onTap: onPressedButtonMissions
+            ),
+            ListTile(
+                leading: const Icon(Icons.chat),
+                title: Text("Fórum"),
+                onTap: onPressedButtonForum
             ),
             const Divider(color: Colors.black54),
             ListTile(
@@ -133,6 +145,26 @@ class _SubjectPageState extends State<SubjectPage> {
         },
       ),
           (Route<dynamic> route) => false,
+    );
+  }
+  void onPressedButtonMissions() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) {
+          return const listMissionsPage();
+        },
+      ),
+    );
+  }
+  void onPressedButtonForum() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) {
+          return const ForumPage();
+        },
+      ),
     );
   }
   void onPressedButtonHome() {

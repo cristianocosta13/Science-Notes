@@ -8,7 +8,7 @@ class UserDao {
     Helper dbHelper = Helper();
     Database db = await dbHelper.initDB();
 
-    await db.insert('users', user.toJson());
+    await db.insert('user', user.toJson());
   }
 
   Future<bool> authenticate({required String username, required String password}) async {
@@ -16,7 +16,7 @@ class UserDao {
     Database db = await dbHelper.initDB();
 
     String sql = 'SELECT * '
-                 'FROM users '
+                 'FROM user '
                  'WHERE username = ? AND password = ?;';
 
     final result = await db.rawQuery(sql, [username, password]);
@@ -29,7 +29,7 @@ class UserDao {
     Database db = await dbHelper.initDB();
 
     String sql = 'SELECT * '
-                 'FROM users '
+                 'FROM user '
                  'WHERE username = ?;';
     final resposta = await db.rawQuery(sql,[username]);
     return resposta.isNotEmpty;
@@ -40,7 +40,7 @@ class UserDao {
     Database db = await dbHelper.initDB();
 
     String sql = 'SELECT * '
-                 'FROM users '
+                 'FROM user '
                  'WHERE email = ?;';
     final resposta = await db.rawQuery(sql,[email]);
     return resposta.isNotEmpty;
@@ -50,7 +50,7 @@ class UserDao {
     Helper dbHelper = Helper();
     Database db = await dbHelper.initDB();
 
-    String sql = 'SELECT * FROM users;';
+    String sql = 'SELECT * FROM user;';
     final result = await db.rawQuery(sql);
 
     List<Users> lista = <Users>[];
@@ -66,7 +66,7 @@ class UserDao {
     int id=0;
     Helper dbHelper = Helper();
     Database db = await dbHelper.initDB();
-    String sql = 'SELECT * FROM users WHERE id = (SELECT MAX(id) FROM users);';
+    String sql = 'SELECT * FROM user WHERE id = (SELECT MAX(id) FROM user);';
     final result = await db.rawQuery(sql);
 
     for(var json in result){
