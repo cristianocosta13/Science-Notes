@@ -1,4 +1,7 @@
 import 'package:sciencenotes/assets/colors/custom_colors.dart';
+import 'package:sciencenotes/domain/favorites.dart';
+import 'package:sciencenotes/pages/favorites.dart';
+import 'package:sciencenotes/pages/flashcards.dart';
 import 'package:sciencenotes/pages/home_page.dart';
 import 'package:sciencenotes/pages/listPeople_page.dart';
 import 'package:sciencenotes/pages/resume_page.dart';
@@ -28,105 +31,121 @@ class SubjectPage extends StatefulWidget {
 class _SubjectPageState extends State<SubjectPage> {
   int selectedIndex = 0;
   @override
-
   Widget build(BuildContext context) {
     List<Widget> pages = [
-      ResumePage(content: widget.content,),
-      VideosPage(conteudo: widget.content,),
+      ResumePage(
+        content: widget.content,
+      ),
+      VideosPage(
+        conteudo: widget.content,
+      ),
       QuestionsPage(conteudo: widget.content),
       const ProfilePage(),
     ];
 
-
-    return  SafeArea(
+    return SafeArea(
       child: Scaffold(
-      drawer: Drawer(
+        drawer: Drawer(
+          backgroundColor: CustomColors.gradienColor,
+          child: Column(
+            children: [
+              ListTile(
+                leading: Icon(Icons.home_outlined),
+                title: Text("Home"),
+                onTap: onPressedButtonHome,
+              ),
+              ListTile(
+                leading: Icon(Icons.person_rounded),
+                title: Text("Profiles"),
+                onTap: onPressedButtonProfiles,
+              ),
+              ListTile(
+                leading: Icon(Icons.stacked_line_chart_outlined),
+                title: Text("Estatísticas"),
+                onTap: () => print('clicou'),
+              ),
+              ListTile(
+                  leading: const Icon(Icons.favorite_border),
+                  title: Text("Favourites"),
+                  onTap: onPressedButtonFavorites),
+              ListTile(
+                  leading: const Icon(Icons.add_card),
+                  title: Text("Flashcards"),
+                  onTap: onPressedButtonFlashcards),
+              ListTile(
+                  leading: const Icon(Icons.task_alt_rounded),
+                  title: Text("Missions"),
+                  onTap: onPressedButtonMissions),
+              ListTile(
+                  leading: const Icon(Icons.chat),
+                  title: Text("Fórum"),
+                  onTap: onPressedButtonForum),
+              const Divider(color: Colors.black54),
+              ListTile(
+                leading: Icon(Icons.question_mark),
+                title: Text("About Us"),
+                onTap: onPressedButtonAboutUs,
+              ),
+              ListTile(
+                leading: const Icon(Icons.add_alert),
+                title: Text("Notifications"),
+                onTap: () => print('clicou'),
+              ),
+            ],
+          ),
+        ),
+        appBar: AppBar(
+          title: Text(
+            selectedIndex == 3 ? 'Science Notes' : widget.content.title,
+            style: const TextStyle(
+                fontSize: 24,
+                color: CustomColors.white,
+                fontFamily: 'Staatliches'),
+          ),
+          actions: [
+            IconButton(
+              icon: selectedIndex == 0
+                  ? const Icon(Icons.search_rounded)
+                  : const Icon(Icons.home),
+              onPressed: selectedIndex == 0
+                  ? () {
+                      showSearch(context: context, delegate: SearchPage());
+                    }
+                  : () {},
+              color: selectedIndex == 0 ? Colors.white : Colors.transparent,
+            ),
+          ],
+          backgroundColor: CustomColors.appeButtonColor,
+        ),
         backgroundColor: CustomColors.gradienColor,
-        child: Column(
-          children: [
-            ListTile(
-              leading: Icon(Icons.home_outlined),
-              title: Text("Home"),
-              onTap: onPressedButtonHome,
+        body: pages[selectedIndex],
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: selectedIndex,
+          onTap: directionPage,
+          showUnselectedLabels: true,
+          unselectedItemColor: CustomColors.chemistryColor,
+          selectedItemColor: CustomColors.chemistryColor,
+          type: BottomNavigationBarType.fixed,
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(CupertinoIcons.book_solid),
+              label: 'Resumos',
             ),
-            ListTile(
-              leading: Icon(Icons.person_rounded),
-              title: Text("Profiles"),
-              onTap: onPressedButtonProfiles,
+            BottomNavigationBarItem(
+              icon: Icon(CupertinoIcons.videocam_circle),
+              label: 'Vídeos',
             ),
-            ListTile(
-              leading: Icon(Icons.stacked_line_chart_outlined),
-              title: Text("Estatísticas"),
-              onTap: () => print('clicou'),
+            BottomNavigationBarItem(
+              icon: Icon(CupertinoIcons.pencil_circle),
+              label: 'Questões',
             ),
-            ListTile(
-                leading: const Icon(Icons.favorite_border),
-                title: Text("Favourites"),
-                onTap: () => print('clicou')
-            ),
-            ListTile(
-                leading: const Icon(Icons.task_alt_rounded),
-                title: Text("Missions"),
-                onTap: onPressedButtonMissions
-            ),
-            ListTile(
-                leading: const Icon(Icons.chat),
-                title: Text("Fórum"),
-                onTap: onPressedButtonForum
-            ),
-            const Divider(color: Colors.black54),
-            ListTile(
-              leading: Icon(Icons.question_mark),
-              title: Text("About Us"),
-              onTap: onPressedButtonAboutUs,
-            ),
-            ListTile(
-              leading: const Icon(Icons.add_alert),
-              title: Text("Notifications"),
-              onTap: () => print('clicou'),
+            BottomNavigationBarItem(
+              icon: Icon(CupertinoIcons.person),
+              label: 'Perfil',
             ),
           ],
         ),
       ),
-      appBar: AppBar(
-        title: Text(
-          selectedIndex==3 ? 'Science Notes' : widget.content.title,
-          style: const TextStyle(
-              fontSize: 24, color: CustomColors.white,  fontFamily: 'Staatliches'),
-        ),
-        actions: [
-          IconButton(
-            icon: selectedIndex==0 ? const Icon(Icons.search_rounded) :
-            const Icon(Icons.home),
-            onPressed: selectedIndex==0 ?
-                (){showSearch(context: context, delegate: SearchPage());} : (){},
-            color: selectedIndex==0 ? Colors.white: Colors.transparent,
-          ),
-        ],
-        backgroundColor: CustomColors.appeButtonColor,
-
-      ),
-      backgroundColor:CustomColors.gradienColor,
-      body: pages[selectedIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: selectedIndex,
-        onTap: directionPage,
-        showUnselectedLabels: true,
-        unselectedItemColor: CustomColors.chemistryColor,
-        selectedItemColor: CustomColors.chemistryColor,
-        type: BottomNavigationBarType.fixed,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.book_solid), label: 'Resumos',),
-          BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.videocam_circle), label: 'Vídeos',),
-          BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.pencil_circle), label: 'Questões',),
-          BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.person), label: 'Perfil',),
-        ],
-      ),
-    ),
     );
   }
 
@@ -144,9 +163,10 @@ class _SubjectPageState extends State<SubjectPage> {
           return const HomePage();
         },
       ),
-          (Route<dynamic> route) => false,
+      (Route<dynamic> route) => false,
     );
   }
+
   void onPressedButtonMissions() {
     Navigator.push(
       context,
@@ -157,6 +177,7 @@ class _SubjectPageState extends State<SubjectPage> {
       ),
     );
   }
+
   void onPressedButtonForum() {
     Navigator.push(
       context,
@@ -167,6 +188,18 @@ class _SubjectPageState extends State<SubjectPage> {
       ),
     );
   }
+
+  void onPressedButtonFavorites() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) {
+          return const FavoritesPage();
+        },
+      ),
+    );
+  }
+
   void onPressedButtonHome() {
     Navigator.pushAndRemoveUntil(
       context,
@@ -175,24 +208,37 @@ class _SubjectPageState extends State<SubjectPage> {
           return const HomePage();
         },
       ),
-          (Route<dynamic> route) => false,
+      (Route<dynamic> route) => false,
     );
   }
-  void onPressedButtonProfiles(){
+
+  void onPressedButtonProfiles() {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context){
+        builder: (context) {
           return const listPeoplePage();
         },
       ),
     );
   }
-  void onPressedButtonAboutUs(){
+
+  void onPressedButtonFlashcards() {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context){
+        builder: (context) {
+          return const FlashcardsPage();
+        },
+      ),
+    );
+  }
+
+  void onPressedButtonAboutUs() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) {
           return const AboutPage();
         },
       ),

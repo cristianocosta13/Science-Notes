@@ -5,7 +5,7 @@ import 'package:sqflite/sqflite.dart';
 class Helper {
   initDB() async {
     String databasePath = await getDatabasesPath();
-    String path = join(databasePath, "scienceNotes.db");
+    String path = join(databasePath, "scienceNotes1.db");
     Database database = await openDatabase(
       path,
       version: 1,
@@ -21,7 +21,7 @@ class Helper {
     await db.execute(sql);
 
     sql =
-     "INSERT INTO USER (id, email, name, image, password, username, birthdate) "
+        "INSERT INTO USER (id, email, name, image, password, username, birthdate) "
         "VALUES (1, 'jfo3@aluno.ifal.edu.br', 'Júlia', 'https://animais.com', '12345', 'fjuliaaf', "
         "'21/04/2005');";
     await db.execute(sql);
@@ -33,6 +33,12 @@ class Helper {
         "VALUES ('Primeira mensagem do fórum.');";
     await db.execute(sql);
 
+    sql =
+        'create table FAV (nameDiscipline varchar(100) PRIMARY KEY, id_content int, constraint fk_fav_id_content foreign key (id_content) references content(id) );';
+    await db.execute(sql);
+
+    sql = "INSERT INTO FAV (nameDiscipline, id_content) "
+    "VALUES ('Seus conteúdos favoritos aparecem aqui!', 11);";
+    await db.execute(sql);
   }
 }
-
