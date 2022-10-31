@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:sciencenotes/domain/content.dart';
 import 'package:sciencenotes/assets/colors/custom_colors.dart';
+import 'package:sciencenotes/domain/question.dart';
 
 class QuestionCard extends StatefulWidget {
-  final Content content;
-  final int index;
+  final Question question;
 
   const QuestionCard({
     Key? key,
-    required this.content,
-    required this.index,
+    required this.question,
   }) : super(key: key);
 
   @override
@@ -30,55 +28,55 @@ class _QuestionCardState extends State<QuestionCard> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(4),
         ),
-        color: widget.content.question[widget.index].colorQuestion,
+        color: Color(widget.question.colorQuestion),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               buildText(
-                  text: widget.content.question[widget.index].institute,
+                  text: widget.question.institute,
                   isBold: true),
               const SizedBox(
                 height: 4,
               ),
-              buildText(text: widget.content.question[widget.index].question),
+              buildText(text: widget.question.question),
               const SizedBox(
                 height: 4,
               ),
               buildContainerQuestion(
-                  alternative: widget.content.question[widget.index].alt1,
+                  alternative: widget.question.alt1,
                   index: 1),
               const SizedBox(
                 height: 4,
               ),
               buildContainerQuestion(
-                  alternative: widget.content.question[widget.index].alt2,
+                  alternative: widget.question.alt2,
                   index: 2),
               const SizedBox(
                 height: 4,
               ),
               buildContainerQuestion(
-                  alternative: widget.content.question[widget.index].alt3,
+                  alternative: widget.question.alt3,
                   index: 3),
               const SizedBox(
                 height: 4,
               ),
               buildContainerQuestion(
-                  alternative: widget.content.question[widget.index].alt4,
+                  alternative: widget.question.alt4,
                   index: 4),
               const SizedBox(
                 height: 4,
               ),
               buildContainerQuestion(
-                  alternative: widget.content.question[widget.index].alt5,
+                  alternative: widget.question.alt5,
                   index: 5),
               Center(
                 child: Column(
                   children: [
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        primary: widget.content.colorButton,
+                        primary: Color(widget.question.colorQuestion), //cor botao
                       ),
                       onPressed: () {
                         setState((){
@@ -100,10 +98,9 @@ class _QuestionCardState extends State<QuestionCard> {
                     ),
                     Text(
                       isAnswer == true && selectedValue !=
-                          widget.content.question[widget.index].alterCorrect ?
+                          widget.question.alterCorrect ?
                       'A resposta certa era a de opção '
-                          '${widget.content.question[widget.index].
-                      alterCorrect}!' : '',
+                          '${widget.question.alterCorrect}!' : '',
                       style: const TextStyle(
                         color: Colors.blueGrey,
                         fontWeight: FontWeight.bold,
@@ -135,38 +132,30 @@ class _QuestionCardState extends State<QuestionCard> {
     );
   }
 
-  // Color applyColor({
-  //   required int selected, required int altCorrect,
-  // }) {
-  //   if(altCorrect != selected){
-  //     return colorAltIncorrect;
-  //   }
-  //   return colorAltCorrect;
-  // }
 
   Container buildContainerQuestion({
     required String alternative,
     required int index,
     int replyCurrent = 0,
-  })
-  {
+  }){
+
     return Container(
       color: isAnswer==true && selectedValue == index && index !=
-          widget.content.question[widget.index].alterCorrect ?
-          colorAltIncorrect
+          widget.question.alterCorrect ?
+      colorAltIncorrect
           : Colors.transparent,
       child: Row(
         children: [
           Radio(
             activeColor: isAnswer == true && selectedValue == index && index ==
-                widget.content.question[widget.index].alterCorrect ?
+                widget.question.alterCorrect ?
             Colors.green : Colors.blueGrey,
             value: index,
             groupValue: selectedValue,
             onChanged: (value) {
               setState(() {
                 if (isAnswer==true && index !=
-                    widget.content.question[widget.index].alterCorrect){
+                    widget.question.alterCorrect){
                   replyCurrent = index;
                 }
                 selectedValue = index;
@@ -183,11 +172,11 @@ class _QuestionCardState extends State<QuestionCard> {
               style: TextStyle(
                 fontSize: 18,
                 color: isAnswer == true && selectedValue == index && index ==
-                    widget.content.question[widget.index].alterCorrect ?
-                    Colors.green : Colors.black,
+                    widget.question.alterCorrect ?
+                Colors.green : Colors.black,
                 fontFamily: 'Abel-Regular',
                 fontWeight: isAnswer == true && selectedValue == index && index ==
-                    widget.content.question[widget.index].alterCorrect ?
+                    widget.question.alterCorrect ?
                 FontWeight.bold : null,
               ),
               textAlign: TextAlign.justify,
@@ -198,12 +187,13 @@ class _QuestionCardState extends State<QuestionCard> {
     );
   }
 
+
   void checkAlternative() {
-    if (selectedValue ==
-        widget.content.question[widget.index].alterCorrect) {
+    if (selectedValue == widget.question.alterCorrect) {
       colorAltCorrect = CustomColors.biologyColor;
     } else {
       colorAltIncorrect = CustomColors.redColor;
     }
   }
+
 }

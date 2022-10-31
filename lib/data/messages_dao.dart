@@ -14,7 +14,7 @@ class MessageDao {
     Helper dbHelper = Helper();
     Database db = await dbHelper.initDB();
     String sql = 'SELECT * '
-                 'FROM message;';
+        'FROM message;';
     final result = await db.rawQuery(sql);
 
     List<Messages> lista = <Messages>[];

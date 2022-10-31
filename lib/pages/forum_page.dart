@@ -36,44 +36,44 @@ class _ForumPageState extends State<ForumPage> {
         padding: const EdgeInsets.all(16.0),
         child: Expanded(
           child:Column(
-          children: [
-           const Spacer(),
-            Expanded(child: buildListView()),
-            Row(
-              children: [
-                Expanded(
-                  child: Form(
-                    key: _formKey,
-                    child: Column(
-                      children: [
-                        TextFormField(
-                          decoration: const InputDecoration(
-                            labelText: 'Digite sua mensagem',
-                            labelStyle: TextStyle(
-                              color: CustomColors.textColor,
-                              fontFamily: 'Abel-Regular',
-                            ),
-                            focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: CustomColors.appeButtonColor,
+            children: [
+              const Spacer(),
+              Expanded(child: buildListView()),
+              Row(
+                children: [
+                  Expanded(
+                    child: Form(
+                      key: _formKey,
+                      child: Column(
+                        children: [
+                          TextFormField(
+                            decoration: const InputDecoration(
+                              labelText: 'Digite sua mensagem',
+                              labelStyle: TextStyle(
+                                color: CustomColors.textColor,
+                                fontFamily: 'Abel-Regular',
+                              ),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: CustomColors.appeButtonColor,
+                                ),
                               ),
                             ),
+                            controller: msgController,
                           ),
-                          controller: msgController,
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                IconButton(
-                  icon: const Icon(Icons.send),
-                  onPressed: onPressedButton,
-                  color: Color.fromARGB(255, 85, 139, 135),
-                ),
-              ],
-            ),
-          ],
-        ),
+                  IconButton(
+                    icon: const Icon(Icons.send),
+                    onPressed: onPressedButton,
+                    color: Color.fromARGB(255, 85, 139, 135),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -86,9 +86,9 @@ class _ForumPageState extends State<ForumPage> {
     await MessageDao().saveMessage(message: message);
     // clearText(msg);
     setState(() {
-        list = MessageDao().listMessages();
+      list = MessageDao().listMessages();
     });
-      
+
   }
 
   // void clearText(parameter){

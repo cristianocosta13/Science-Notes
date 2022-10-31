@@ -14,10 +14,10 @@ class _ProfilePageState extends State<ProfilePage>{
   @override
   Widget build(BuildContext context){
     return Center(
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: buildListView(),
-        ),
+      child: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: buildListView(),
+      ),
     );
   }
   buildListView(){

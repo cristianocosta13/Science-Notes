@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sciencenotes/data/DBcontent.dart';
 import 'package:sciencenotes/assets/colors/custom_colors.dart';
+import 'package:sciencenotes/data/content_dao.dart';
 import 'package:sciencenotes/widgets/content_card.dart';
 import 'package:sciencenotes/domain/content.dart';
 
@@ -13,7 +13,9 @@ class BiologyPage extends StatefulWidget {
 
 class _BiologyPageState extends State<BiologyPage> {
 
-  Future<List<Content>> list = DBcontent.getListBiology();
+  // Future<List<Content>> list = DBcontent.getListBiology();
+
+  Future<List<Content>> list = ContentDao().listContentBiology();
 
   @override
   Widget build(BuildContext context) {

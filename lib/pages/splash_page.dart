@@ -35,13 +35,13 @@ class _SplashPageState extends State<SplashPage> {
       );
     } else {
       Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) {
-          return const EnterPage();
-        },
-      ),
-    );
+        context,
+        MaterialPageRoute(
+          builder: (context) {
+            return const EnterPage();
+          },
+        ),
+      );
     }
   }
 

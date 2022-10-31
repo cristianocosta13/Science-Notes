@@ -39,6 +39,6 @@ class _listMissionsPageState extends State<listMissionsPage> {
         Mission(title: "Planner", description: "Organize suas tarefas diárias.", icon: Icons.calendar_month),
         Mission(title: "Simulados", description: "Faça simulados interdiscuplinares com frequência e treine tudo o que aprendeu.", icon: Icons.text_increase_sharp),
       ],
-    );     
+    );
   }
 }

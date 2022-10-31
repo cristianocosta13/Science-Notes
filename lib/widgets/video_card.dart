@@ -1,7 +1,6 @@
-///essa página é para reaproveitamento global, já que o widget será usado outras vezes
 import 'package:flutter/material.dart';
 import 'package:sciencenotes/domain/content.dart';
-// import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class VideoCardWidget extends StatefulWidget {
   final Content content;
@@ -22,61 +21,62 @@ class _VideoCardState extends State<VideoCardWidget> {
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            buildImage(),
-            const SizedBox(height: 8),
-            Text(
-                widget.content.videos[widget.index].tituloVideo,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24, fontFamily: 'Abel-Regular')),
-            SizedBox(height: 8),
-            Row(
-              children: [
-                Icon(Icons.timer_outlined),
-                SizedBox(width: 8),
-                Text(widget.content.videos[widget.index].tempoDuracao,
-                    style: TextStyle(fontSize: 24, fontFamily: 'Abel-Regular')),
-              ],
-            ),
-            SizedBox(height: 8),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                ElevatedButton(
-                    onPressed: (){} , //openURL
-                    child: Text(
-                      'ASSISTIR AGORA',
-                      style: TextStyle(color: Color(0xffffffff), fontSize: 24, fontFamily: 'AmaticSC-Regular'),
-                    ),
-                    style: ElevatedButton.styleFrom(
-                        primary: Color(0xff411049),
-                        padding: EdgeInsets.all(16))),
-              ],
-            ),
-          ],
-        ),
+        // child: Column(
+        //   crossAxisAlignment: CrossAxisAlignment.start,
+        //   children: [
+        //     buildImage(),
+        //     const SizedBox(height: 8),
+        //     Text(
+        //         widget.content.videos[widget.index].tituloVideo,
+        //         style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 24, fontFamily: 'Abel-Regular')),
+        //     const SizedBox(height: 8),
+        //     Row(
+        //       children: [
+        //         const Icon(Icons.timer_outlined),
+        //         const SizedBox(width: 8),
+        //         Text(widget.content.videos[widget.index].tempoDuracao,
+        //             style: const TextStyle(fontSize: 24, fontFamily: 'Abel-Regular')),
+        //       ],
+        //     ),
+        //     const SizedBox(height: 8),
+        //     Column(
+        //       crossAxisAlignment: CrossAxisAlignment.stretch,
+        //       children: [
+        //         ElevatedButton(
+        //             onPressed: openURL , //openURL
+        //             child: const Text(
+        //               'ASSISTIR AGORA',
+        //               style: TextStyle(color: Color(0xffffffff), fontSize: 24, fontFamily: 'AmaticSC-Regular'),
+        //             ),
+        //             style: ElevatedButton.styleFrom(
+        //                 primary: const Color(0xff411049),
+        //                 padding: const EdgeInsets.all(16))),
+        //       ],
+        //     ),
+        //   ],
+        // ),
       ),
-      color: Color(0xfff6e7f9),
+      color: const Color(0xfff6e7f9),
     );
   }
 
-  buildImage() {
+  /*buildImage() {
     return ClipRRect(
-      borderRadius: BorderRadius.vertical(
+      borderRadius: const BorderRadius.vertical(
           top: Radius.circular(4), bottom: Radius.circular(4)),
       child: Image.network(widget.content.videos[widget.index]
-          .urlImage), 
+          .urlImage),
     );
+  }*/
+
+  Future<void> openURL() async {
+    final url = Uri.parse('https://www.youtube.com/watch?v=_6ILoTeChCE');
+    if (await launchUrl(url)) {
+      url;
+      mode: LaunchMode.externalApplication;
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 
-  // void openURL() async {
-  //   const url =
-  //       'https://www.youtube.com/watch?v=_6ILoTeChCE'; //widget.content.video[widget.index].urlVideo
-  //   if (await canLaunch(url)) {
-  //     await launch(url);
-  //   } else {
-  //     throw "Falha ao carregar";
-  //   }
-  // }
 }

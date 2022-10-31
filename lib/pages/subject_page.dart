@@ -33,61 +33,61 @@ class _SubjectPageState extends State<SubjectPage> {
     List<Widget> pages = [
       ResumePage(content: widget.content,),
       VideosPage(conteudo: widget.content,),
-      QuestionsPage(conteudo: widget.content),
+      QuestionsPage(content: widget.content),
       const ProfilePage(),
     ];
 
 
     return  SafeArea(
       child: Scaffold(
-      drawer: Drawer(
-        backgroundColor: CustomColors.gradienColor,
-        child: Column(
-          children: [
-            ListTile(
-              leading: Icon(Icons.home_outlined),
-              title: Text("Home"),
-              onTap: onPressedButtonHome,
-            ),
-            ListTile(
-              leading: Icon(Icons.person_rounded),
-              title: Text("Profiles"),
-              onTap: onPressedButtonProfiles,
-            ),
-            ListTile(
-              leading: Icon(Icons.stacked_line_chart_outlined),
-              title: Text("Estatísticas"),
-              onTap: () => print('clicou'),
-            ),
-            ListTile(
-                leading: const Icon(Icons.favorite_border),
-                title: Text("Favourites"),
-                onTap: () => print('clicou')
-            ),
-            ListTile(
-                leading: const Icon(Icons.task_alt_rounded),
-                title: Text("Missions"),
-                onTap: onPressedButtonMissions
-            ),
-            ListTile(
-                leading: const Icon(Icons.chat),
-                title: Text("Fórum"),
-                onTap: onPressedButtonForum
-            ),
-            const Divider(color: Colors.black54),
-            ListTile(
-              leading: Icon(Icons.question_mark),
-              title: Text("About Us"),
-              onTap: onPressedButtonAboutUs,
-            ),
-            ListTile(
-              leading: const Icon(Icons.add_alert),
-              title: Text("Notifications"),
-              onTap: () => print('clicou'),
-            ),
-          ],
+        drawer: Drawer(
+          backgroundColor: CustomColors.gradienColor,
+          child: Column(
+            children: [
+              ListTile(
+                leading: Icon(Icons.home_outlined),
+                title: Text("Home"),
+                onTap: onPressedButtonHome,
+              ),
+              ListTile(
+                leading: Icon(Icons.person_rounded),
+                title: Text("Profiles"),
+                onTap: onPressedButtonProfiles,
+              ),
+              ListTile(
+                leading: Icon(Icons.stacked_line_chart_outlined),
+                title: Text("Estatísticas"),
+                onTap: () => print('clicou'),
+              ),
+              ListTile(
+                  leading: const Icon(Icons.favorite_border),
+                  title: Text("Favourites"),
+                  onTap: () => print('clicou')
+              ),
+              ListTile(
+                  leading: const Icon(Icons.task_alt_rounded),
+                  title: Text("Missions"),
+                  onTap: onPressedButtonMissions
+              ),
+              ListTile(
+                  leading: const Icon(Icons.chat),
+                  title: Text("Fórum"),
+                  onTap: onPressedButtonForum
+              ),
+              const Divider(color: Colors.black54),
+              ListTile(
+                leading: Icon(Icons.question_mark),
+                title: Text("About Us"),
+                onTap: onPressedButtonAboutUs,
+              ),
+              ListTile(
+                leading: const Icon(Icons.add_alert),
+                title: Text("Notifications"),
+                onTap: () => print('clicou'),
+              ),
+            ],
+          ),
         ),
-      ),
       appBar: AppBar(
         title: Text(
           selectedIndex==3 ? 'Science Notes' : widget.content.title,

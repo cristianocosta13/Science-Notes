@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:sciencenotes/data/DBcontent.dart';
 import 'package:sciencenotes/assets/colors/custom_colors.dart';
+import 'package:sciencenotes/data/content_dao.dart';
 import 'package:sciencenotes/widgets/content_card.dart';
 import 'package:sciencenotes/domain/content.dart';
 
@@ -13,12 +13,14 @@ class PhysicalPage extends StatefulWidget {
 
 class _PhysicalPageState extends State<PhysicalPage> {
 
-  Future<List<Content>> list = DBcontent.getListPhysical();
+  //Future<List<Content>> list = DBcontent.getListPhysical();
+
+  Future<List<Content>> list = ContentDao().listContentPhysical();
 
   @override
   Widget build(BuildContext context) {
 
-  return Scaffold(
+    return Scaffold(
       appBar: AppBar(
         backgroundColor: CustomColors.appeButtonColor,
         centerTitle: false,

@@ -19,7 +19,7 @@ class _ResumePageState extends State<ResumePage> {
   String text = "O aplicativo Sciencenotes foi feito para ajudar pessoas com dificudade nos campos da ciência";
 
   get children => null;
-  
+
   makeDialog(BuildContext context, String text){
     showDialog(
         context: context,
@@ -29,7 +29,7 @@ class _ResumePageState extends State<ResumePage> {
             content: Text(
               text,
               style: TextStyle(fontFamily: 'Abel-Regular'),
-              ),
+            ),
           );
         }
     );
@@ -66,23 +66,23 @@ class _ResumePageState extends State<ResumePage> {
           children: [
             Column(
               children: [
-                buildText(text: widget.content.resume.paragraph1),
+                //buildText(text: widget.content.resume.paragraph1),
                 const SizedBox(height: 8,),
-                buildText(text: widget.content.resume.paragraph2),
+                //buildText(text: widget.content.resume.paragraph2),
                 const SizedBox(height: 8,),
                 Center(
                   child: SizedBox(
                     height: 400,
                     width: 400,
-                    child: Image.network(
-                      widget.content.resume.image,
-                      fit: BoxFit.contain,
-                    ),
+                    // child: Image.network(
+                    //   widget.content.resume.image,
+                    //   fit: BoxFit.contain,
+                    // ),
                   ),
                 ),
-                buildText(text: widget.content.resume.paragraph3),
+                //buildText(text: widget.content.resume.paragraph3),
                 const SizedBox(height: 8,),
-                buildText(text: widget.content.resume.paragraph4),
+                //buildText(text: widget.content.resume.paragraph4),
                 TextHighlight(
                   text: text,
                   words: makewords(context),

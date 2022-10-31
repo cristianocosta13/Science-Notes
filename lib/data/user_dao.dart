@@ -1,6 +1,6 @@
+import 'package:sciencenotes/data/DBhelper.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sciencenotes/domain/users.dart';
-import 'package:sciencenotes/data/DBhelper.dart';
 
 class UserDao {
 
@@ -16,8 +16,8 @@ class UserDao {
     Database db = await dbHelper.initDB();
 
     String sql = 'SELECT * '
-                 'FROM user '
-                 'WHERE username = ? AND password = ?;';
+        'FROM user '
+        'WHERE username = ? AND password = ?;';
 
     final result = await db.rawQuery(sql, [username, password]);
 
@@ -29,8 +29,8 @@ class UserDao {
     Database db = await dbHelper.initDB();
 
     String sql = 'SELECT * '
-                 'FROM user '
-                 'WHERE username = ?;';
+        'FROM user '
+        'WHERE username = ?;';
     final resposta = await db.rawQuery(sql,[username]);
     return resposta.isNotEmpty;
   }
@@ -40,8 +40,8 @@ class UserDao {
     Database db = await dbHelper.initDB();
 
     String sql = 'SELECT * '
-                 'FROM user '
-                 'WHERE email = ?;';
+        'FROM user '
+        'WHERE email = ?;';
     final resposta = await db.rawQuery(sql,[email]);
     return resposta.isNotEmpty;
   }
@@ -51,8 +51,8 @@ class UserDao {
     Database db = await dbHelper.initDB();
 
     String sql = 'UPDATE user '
-                 'SET password = ?'
-                 'WHERE email = ?;';
+        'SET password = ?'
+        'WHERE email = ?;';
     final answer = await db.rawQuery(sql,[password,email]);
   }
 

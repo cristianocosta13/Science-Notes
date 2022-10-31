@@ -15,7 +15,7 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
 
-  TextEditingController userController = TextEditingController(); 
+  TextEditingController userController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController nascimentController = TextEditingController();
   TextEditingController emailController = TextEditingController();
@@ -39,8 +39,8 @@ class _RegisterPageState extends State<RegisterPage> {
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: ListView(
-            children: [
-              Form(
+              children: [
+                Form(
                   key: _formKey,
                   child: Column(
                     children: [
@@ -73,8 +73,8 @@ class _RegisterPageState extends State<RegisterPage> {
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Campo usuário obrigatório';
-                          } 
-                            return null;
+                          }
+                          return null;
                         },
                       ),
                       const SizedBox(height: 8),
@@ -96,8 +96,8 @@ class _RegisterPageState extends State<RegisterPage> {
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Campo nome completo obrigatório';
-                          } 
-                            return null;
+                          }
+                          return null;
                         },
                       ),
                       const SizedBox(height: 8),
@@ -119,8 +119,8 @@ class _RegisterPageState extends State<RegisterPage> {
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Campo data de nascimento obrigatório';
-                          } 
-                            return null;
+                          }
+                          return null;
                         },
                       ),
                       const SizedBox(height: 8),
@@ -142,8 +142,8 @@ class _RegisterPageState extends State<RegisterPage> {
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Campo email obrigatório';
-                          } 
-                            return null;
+                          }
+                          return null;
                         },
                       ),
                       const SizedBox(height: 8),
@@ -153,22 +153,22 @@ class _RegisterPageState extends State<RegisterPage> {
                           icon: Icon(CupertinoIcons.lock_shield_fill, color: CustomColors.appeButtonColor),
                           labelText: 'Senha',
                           labelStyle: TextStyle(
-                              color: CustomColors.textColor,
-                              fontFamily: 'Abel-Regular',
-                            ),
-                            focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: CustomColors.appeButtonColor,
-                              ),
+                            color: CustomColors.textColor,
+                            fontFamily: 'Abel-Regular',
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: CustomColors.appeButtonColor,
                             ),
                           ),
-                          controller: passwordController,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'Campo senha obrigatório';
-                            } 
-                              return null;
-                          },
+                        ),
+                        controller: passwordController,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Campo senha obrigatório';
+                          }
+                          return null;
+                        },
                       ),
                       const SizedBox(height: 72),
                       ElevatedButton(
@@ -188,8 +188,8 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                     ],
                   ),
-              )
-            ]
+                )
+              ]
           ),
         ),
       ),
@@ -209,9 +209,9 @@ class _RegisterPageState extends State<RegisterPage> {
       //   id++;
       //   antigoID = await UserDao().antigoID(id: id);
       // }
-      
-       int id = await UserDao().listIDs();
-       id++;
+
+      int id = await UserDao().listIDs();
+      id++;
 
       Users newUser = Users(id: id, email: email, name: name, image: " ", password: password, username: user, birthdate: data);
       bool exclusivityUser = await UserDao().exclusivityUser(username: user);
@@ -242,13 +242,13 @@ class _RegisterPageState extends State<RegisterPage> {
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
-  // gerarID() async{
-  //   int id = 2;
-  //   bool antigoID = await UserDao().antigoID(id: id);
-  //   while(antigoID){
-  //     id++;
-  //     antigoID = await UserDao().antigoID(id: id);
-  //   }
-  //   return id;
-  // }
+// gerarID() async{
+//   int id = 2;
+//   bool antigoID = await UserDao().antigoID(id: id);
+//   while(antigoID){
+//     id++;
+//     antigoID = await UserDao().antigoID(id: id);
+//   }
+//   return id;
+// }
 }

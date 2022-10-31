@@ -35,19 +35,19 @@ class _listPeoplePageState extends State<listPeoplePage> {
 
   buildListView(){
     return FutureBuilder<List<Users>>(
-      future: list,
-      builder: (context, snapshot){
-        if(snapshot.hasData){
-          List<Users> list = snapshot.data ?? [];
-          return ListView.builder(
-            itemCount: list.length,
-            itemBuilder: (BuildContext context, int index){
-              return ListFolks(user: list[index]);
-            },
-          );
+        future: list,
+        builder: (context, snapshot){
+          if(snapshot.hasData){
+            List<Users> list = snapshot.data ?? [];
+            return ListView.builder(
+              itemCount: list.length,
+              itemBuilder: (BuildContext context, int index){
+                return ListFolks(user: list[index]);
+              },
+            );
+          }
+          return Center(child: const CircularProgressIndicator());
         }
-        return Center(child: const CircularProgressIndicator());
-      }
     );
   }
 }

@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
-import 'package:sciencenotes/data/DBcontent.dart';
 import 'package:sciencenotes/assets/colors/custom_colors.dart';
+import 'package:sciencenotes/data/content_dao.dart';
 import 'package:sciencenotes/widgets/content_card.dart';
 import 'package:sciencenotes/domain/content.dart';
 
@@ -14,7 +14,9 @@ class ChemicalPage extends StatefulWidget {
 
 class _ChemicalPageState extends State<ChemicalPage> {
 
-  Future<List<Content>> list = DBcontent.getListChemical();
+  //Future<List<Content>> list = DBcontent.getListChemical();
+
+  Future<List<Content>> list = ContentDao().listContentChemical();
 
   @override
   Widget build(BuildContext context) {

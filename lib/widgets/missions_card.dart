@@ -25,40 +25,40 @@ class _MissionCardState extends State<Mission> {
   Widget build(BuildContext context){
     return InkWell(
       child: Card(
-        color: Color.fromARGB(255, 248, 214, 128),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 24),
-              Row(
-                children: [
-                  Icon(widget.icon),
-                  const SizedBox(width: 12),
-                  Text(widget.title,
-                    style: TextStyle(
-                      fontFamily: 'AmacticSC-Regular',
-                      fontWeight: FontWeight.bold,
-                      fontSize: 22,
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 18),
-              Text(widget.description,
-                style: TextStyle(
-                      fontFamily: 'Abel-Regular',
-                      fontSize: 20,
-                ),
-              ),
-              const SizedBox(height: 24),
-            ],
+          color: Color.fromARGB(255, 248, 214, 128),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
           ),
-        )
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 24),
+                Row(
+                  children: [
+                    Icon(widget.icon),
+                    const SizedBox(width: 12),
+                    Text(widget.title,
+                      style: TextStyle(
+                        fontFamily: 'AmacticSC-Regular',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 22,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 18),
+                Text(widget.description,
+                  style: TextStyle(
+                    fontFamily: 'Abel-Regular',
+                    fontSize: 20,
+                  ),
+                ),
+                const SizedBox(height: 24),
+              ],
+            ),
+          )
       ),
     );
   }

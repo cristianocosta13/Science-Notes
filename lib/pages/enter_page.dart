@@ -23,143 +23,143 @@ class _EnterPageState extends State<EnterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          centerTitle: false,
-          backgroundColor: CustomColors.appeButtonColor,
-          title: const Text(
-            'Science Notes',
-            style: TextStyle(fontSize: 24, color: Colors.white, fontFamily: 'Staatliches'),
-          ),
+      appBar: AppBar(
+        centerTitle: false,
+        backgroundColor: CustomColors.appeButtonColor,
+        title: const Text(
+          'Science Notes',
+          style: TextStyle(fontSize: 24, color: Colors.white, fontFamily: 'Staatliches'),
         ),
-        backgroundColor: CustomColors.gradienColor,
-        body: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: ListView(
+      ),
+      backgroundColor: CustomColors.gradienColor,
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: ListView(
               children: [
                 Form(
                   key: _formKey,
                   child: Column(
-                    children: [
-                      Image.asset('lib/assets/images/logo.png'),
-                      TextFormField(
-                        controller: userController,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Campo usuário obrigatório';
-                          }
-                          return null;
-                        },
-                        decoration: const InputDecoration(
-                          icon: Icon(Icons.account_box, color: CustomColors.appeButtonColor),
-                          labelText: 'Usuário',
-                          labelStyle: TextStyle(
-                            color: CustomColors.textColor,
-                            fontFamily: 'Abel-Regular',
-                          ),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: CustomColors.appeButtonColor,
+                      children: [
+                        Image.asset('lib/assets/images/logo.png'),
+                        TextFormField(
+                          controller: userController,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Campo usuário obrigatório';
+                            }
+                            return null;
+                          },
+                          decoration: const InputDecoration(
+                            icon: Icon(Icons.account_box, color: CustomColors.appeButtonColor),
+                            labelText: 'Usuário',
+                            labelStyle: TextStyle(
+                              color: CustomColors.textColor,
+                              fontFamily: 'Abel-Regular',
                             ),
-                          ),
-                        ),
-                      ),
-                      TextFormField(
-                        controller: passwordController,
-                        obscureText: true,
-                        decoration: const InputDecoration(
-                          icon: Icon(Icons.lock, color: CustomColors.appeButtonColor),
-                          labelText: 'Senha',
-                          labelStyle: TextStyle(
-                            color: CustomColors.textColor,
-                            fontFamily: 'Abel-Regular',
-                          ),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: CustomColors.appeButtonColor,
-                            ),
-                          ),
-                        ),
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Campo senha obrigatório';
-                          } 
-                          return null;
-                        },
-                      ),
-                      const SizedBox(height: 36),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          ElevatedButton(
-                            onPressed: onPressedButton,
-                            style: ElevatedButton.styleFrom(
-                              primary: CustomColors.appeButtonColor,
-                              minimumSize: (const Size(120, 40)),
-                            ),
-                            child: const Text(
-                              'Logar',
-                              style: TextStyle(
-                                fontSize: 28,
-                                color: CustomColors.white,
-                                fontFamily: 'AmaticSC-Regular',
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: CustomColors.appeButtonColor,
                               ),
                             ),
                           ),
-                          const SizedBox(height: 20),
-                          TextButton(
-                            onPressed:(){
-                              Navigator.push(
-                                context, 
-                                MaterialPageRoute(
-                                  builder: (context) {
-                                    return const RecoverPasswordPage();
-                                  },
+                        ),
+                        TextFormField(
+                          controller: passwordController,
+                          obscureText: true,
+                          decoration: const InputDecoration(
+                            icon: Icon(Icons.lock, color: CustomColors.appeButtonColor),
+                            labelText: 'Senha',
+                            labelStyle: TextStyle(
+                              color: CustomColors.textColor,
+                              fontFamily: 'Abel-Regular',
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: CustomColors.appeButtonColor,
+                              ),
+                            ),
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Campo senha obrigatório';
+                            }
+                            return null;
+                          },
+                        ),
+                        const SizedBox(height: 36),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              ElevatedButton(
+                                onPressed: onPressedButton,
+                                style: ElevatedButton.styleFrom(
+                                  primary: CustomColors.appeButtonColor,
+                                  minimumSize: (const Size(120, 40)),
                                 ),
-                              );
-                            },
-                            child: const Text("Esqueci a minha senha",
-                              style: TextStyle(
-                                color: CustomColors.textColor,
-                                fontSize: 15,
-                                fontFamily: 'Abel-Regular',
+                                child: const Text(
+                                  'Logar',
+                                  style: TextStyle(
+                                    fontSize: 28,
+                                    color: CustomColors.white,
+                                    fontFamily: 'AmaticSC-Regular',
+                                  ),
+                                ),
                               ),
+                              const SizedBox(height: 20),
+                              TextButton(
+                                onPressed:(){
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) {
+                                        return const RecoverPasswordPage();
+                                      },
+                                    ),
+                                  );
+                                },
+                                child: const Text("Esqueci a minha senha",
+                                  style: TextStyle(
+                                    color: CustomColors.textColor,
+                                    fontSize: 15,
+                                    fontFamily: 'Abel-Regular',
+                                  ),
+                                ),
+                              ),
+                            ]
+                        ),
+                        const SizedBox(height: 26),
+                        TextButton(
+                          onPressed:(){
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) {
+                                  return const RegisterPage();
+                                },
+                              ),
+                            );
+                          },
+                          child: const Text("Não tem uma conta? Cadastre-se.",
+                            style: TextStyle(
+                              color: CustomColors.textColor,
+                              fontSize: 16,
+                              fontFamily: 'Abel-Regular',
                             ),
-                          ),
-                        ]
-                      ),
-                      const SizedBox(height: 26),
-                      TextButton(
-                        onPressed:(){
-                          Navigator.push(
-                            context, 
-                            MaterialPageRoute(
-                              builder: (context) {
-                                return const RegisterPage();
-                              },
-                            ),
-                          );
-                        },
-                        child: const Text("Não tem uma conta? Cadastre-se.",
-                          style: TextStyle(
-                            color: CustomColors.textColor,
-                            fontSize: 16,
-                            fontFamily: 'Abel-Regular',
                           ),
                         ),
-                      ),
-                    ]
+                      ]
                   ),
                 ),
               ]
-            ),
           ),
         ),
+      ),
     );
   }
 
   void onPressedButton() async{
-     
+
     if (_formKey.currentState!.validate()) {
       String user = userController.text;
       String pwd = passwordController.text;
@@ -190,4 +190,4 @@ class _EnterPageState extends State<EnterPage> {
     }
   }
 
-  }
+}

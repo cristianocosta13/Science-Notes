@@ -19,50 +19,50 @@ class _ListFolksState extends State<ListFolks> {
       children: [
         const SizedBox(height: 18),
         Row(
-          children: [
-            networkImage(),
-            SizedBox(width: 30),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                TextButton(
-                  onPressed:(){
-                    Navigator.pop(
-                      context, 
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return const ProfilePage();
-                        },
+            children: [
+              networkImage(),
+              SizedBox(width: 30),
+              Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    TextButton(
+                      onPressed:(){
+                        Navigator.pop(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              return const ProfilePage();
+                            },
+                          ),
+                        );
+                      },
+                      child: Text(widget.user.name,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 24,
+                            color: Colors.black,
+                            fontFamily: 'Abel-Regular'
+                        ),
                       ),
-                    );
-                  },
-                  child: Text(widget.user.name,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 24,
-                      color: Colors.black,
-                      fontFamily: 'Abel-Regular'
                     ),
-                  ),
-                ),
-                Text(
-                  widget.user.email,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 24,
-                    color: Colors.black,
-                    fontFamily: 'Abel-Regular'
-                  ),
-                ),
-                ]
+                    Text(
+                      widget.user.email,
+                      style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 24,
+                          color: Colors.black,
+                          fontFamily: 'Abel-Regular'
+                      ),
+                    ),
+                  ]
               ),
             ]
-          ),
-          const SizedBox(height: 18),
-          Divider(
-            color: Colors.black,
-          ),
-        ],
+        ),
+        const SizedBox(height: 18),
+        Divider(
+          color: Colors.black,
+        ),
+      ],
     );
   }
   networkImage() {
