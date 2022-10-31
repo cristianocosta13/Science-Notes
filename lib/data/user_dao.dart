@@ -46,6 +46,16 @@ class UserDao {
     return resposta.isNotEmpty;
   }
 
+  void changePassword({required String email, required String password}) async {
+    Helper dbHelper = Helper();
+    Database db = await dbHelper.initDB();
+
+    String sql = 'UPDATE user '
+                 'SET password = ?'
+                 'WHERE email = ?;';
+    final answer = await db.rawQuery(sql,[password,email]);
+  }
+
   listUsers() async {
     Helper dbHelper = Helper();
     Database db = await dbHelper.initDB();

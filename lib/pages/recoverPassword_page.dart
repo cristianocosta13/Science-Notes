@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sciencenotes/assets/colors/custom_colors.dart';
-//import 'package:sciencenotes/pages/register_page.dart';
 import 'package:sciencenotes/pages/enter_page.dart';
+import 'package:sciencenotes/data/user_dao.dart';
 
 class RecoverPasswordPage extends StatefulWidget {
   const RecoverPasswordPage({Key? key}) : super(key: key);
@@ -32,7 +32,7 @@ class _RecoverPasswordPageState extends State<RecoverPasswordPage> {
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(20.0),
-          child: Column(
+          child: ListView(
             children: [
               Form(
                 key: _formKey,
@@ -95,7 +95,7 @@ class _RecoverPasswordPageState extends State<RecoverPasswordPage> {
                           ),
                         ),
                       ),
-                      controller: emailController,
+                      controller: passwordController,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Campo Nova senha obrigatório';
@@ -128,17 +128,44 @@ class _RecoverPasswordPageState extends State<RecoverPasswordPage> {
       ),
     );
   }
-  void onPressedButton() {
+  void onPressedButton() async {
+
+     String email = emailController.text;
+     String password = passwordController.text;
+
     if (_formKey.currentState!.validate()) {
-      Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(
-          builder: (context) {
-            return const EnterPage();
-          },
-        ),
-            (Route<dynamic> route) => false,
-      );
+      
+      bool isUser = await UserDao().exclusivityEmail(email: email);
+      if (isUser){
+        UserDao().changePassword(email: email,password: password);
+        showSnackBar("Senha alterada com sucesso.");
+         Navigator.pushAndRemoveUntil(
+           context,
+           MaterialPageRoute(
+            builder: (context) {
+              return const EnterPage();
+            },
+           ),
+                (Route<dynamic> route) => false,
+         );
+      }else{
+        showSnackBar("Não há usuário cadastrado com esse e-mail.");
+      }
+
     }
   }
+  showSnackBar(String msg) {
+    final snackBar = SnackBar(
+      behavior: SnackBarBehavior.floating,
+      margin: const EdgeInsets.symmetric(
+        vertical: 80,
+        horizontal: 32,
+      ),
+      content: Text(msg),
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
 }
+
+ 
