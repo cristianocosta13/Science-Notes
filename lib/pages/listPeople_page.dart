@@ -1,5 +1,5 @@
-import 'package:sciencenotes/data/BDpeople.dart';
-import 'package:sciencenotes/domain/people.dart';
+import 'package:sciencenotes/data/DBusers.dart';
+import 'package:sciencenotes/domain/users.dart';
 import 'package:flutter/material.dart';
 import 'package:sciencenotes/assets/colors/custom_colors.dart';
 import 'package:sciencenotes/widgets/list_folks.dart';
@@ -12,7 +12,7 @@ class listPeoplePage extends StatefulWidget {
 }
 
 class _listPeoplePageState extends State<listPeoplePage> {
-  Future<List<People>> list = BD.getPeople();
+  Future<List<Users>> list = DB.getUsers();
 
   @override
   Widget build(BuildContext context) {
@@ -34,15 +34,15 @@ class _listPeoplePageState extends State<listPeoplePage> {
   }
 
   buildListView(){
-    return FutureBuilder<List<People>>(
+    return FutureBuilder<List<Users>>(
       future: list,
       builder: (context, snapshot){
         if(snapshot.hasData){
-          List<People> list = snapshot.data ?? [];
+          List<Users> list = snapshot.data ?? [];
           return ListView.builder(
             itemCount: list.length,
             itemBuilder: (BuildContext context, int index){
-              return ListFolks(people: list[index]);
+              return ListFolks(user: list[index]);
             },
           );
         }

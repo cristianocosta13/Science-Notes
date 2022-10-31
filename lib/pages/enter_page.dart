@@ -3,6 +3,8 @@ import 'package:sciencenotes/assets/colors/custom_colors.dart';
 import 'package:sciencenotes/pages/register_page.dart';
 import 'package:sciencenotes/pages/home_page.dart';
 import 'package:sciencenotes/pages/recoverPassword_page.dart';
+import 'package:sciencenotes/data/user_dao.dart';
+import 'package:sciencenotes/data/shared_prefs_helper.dart';
 
 class EnterPage extends StatefulWidget {
   const EnterPage({Key? key}) : super(key: key);
@@ -156,26 +158,36 @@ class _EnterPageState extends State<EnterPage> {
     );
   }
 
-  void onPressedButton() {
-
+  void onPressedButton() async{
+     
     if (_formKey.currentState!.validate()) {
-      String userBD = "fjuliaaf";
-      String passwordBD = "12345";
-
       String user = userController.text;
       String pwd = passwordController.text;
 
-      if (userBD == user && passwordBD == pwd) {
-        Navigator.pushAndRemoveUntil(
+      bool resultado = await UserDao().authenticate(username: user, password: pwd);
+
+      if (resultado) {
+        SharedPrefsHelper().login();
+        Navigator.pushReplacement(
           context,
           MaterialPageRoute(
             builder: (context) {
               return const HomePage();
-             },
+            },
           ),
-          (Route<dynamic> route) => false,
         );
-      } 
-    } 
+      } else {
+        final msg = SnackBar(
+          behavior: SnackBarBehavior.floating,
+          content: Text(
+            ("Usuario/Senha incorretos"),
+          ),
+        );
+        ScaffoldMessenger.of(context).showSnackBar(msg);
+      }
+    } else {
+      print("Formulário invalido");
+    }
   }
-}
+
+  }

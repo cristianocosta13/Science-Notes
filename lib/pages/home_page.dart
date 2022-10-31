@@ -4,6 +4,8 @@ import 'package:sciencenotes/assets/colors/custom_colors.dart';
 import 'package:sciencenotes/widgets/science_card.dart';
 import 'package:sciencenotes/pages/physical_page.dart';
 import 'package:sciencenotes/pages/chemical_page.dart';
+import 'package:sciencenotes/data/shared_prefs_helper.dart';
+import 'package:sciencenotes/pages/enter_page.dart';
 
 class HomePage extends StatefulWidget{
   const HomePage({Key? key}) : super(key: key);
@@ -22,6 +24,25 @@ class HomePageState extends State<HomePage> {
       appBar: AppBar(
         centerTitle: false,
         backgroundColor: CustomColors.appeButtonColor,
+        actions: [
+          IconButton(
+            onPressed: () {
+              SharedPrefsHelper().logout();
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    return const EnterPage();
+                  },
+                ),
+              );
+            },
+            icon: const Icon(
+              Icons.logout_sharp,
+              color: Colors.white,
+            ),
+          ),
+        ],
         title: const Text(
           'Sciences Notes',
           style: TextStyle(fontSize: 24, color: CustomColors.white,  fontFamily: 'Staatliches'),

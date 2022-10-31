@@ -1,15 +1,16 @@
-import 'package:sciencenotes/domain/people.dart';
+import 'package:sciencenotes/domain/users.dart';
 
-class BD {
-  static List<People> list = [
-    People(
+class DB {
+  static List<Users> list = [
+    Users(
       image:
       'https://static.thenounproject.com/png/448730-200.png',
       name: 'Julia Ferreira',
       email: 'jfo3@aluno.ifal.edu.br',
       password: '12345',
-      user: 'fjuliaaf',
+      username: 'fjuliaaf',
       birthdate: '21/04/2005',
+      id: 1,
     ),
     // People(
     //   image:
@@ -49,7 +50,7 @@ class BD {
     // ),
   ];
 
-  static Future<List<People>> getPeople() async {
+  static Future<List<Users>> getUsers() async {
     await Future.delayed(const Duration(seconds: 4));
     return list;
   }
