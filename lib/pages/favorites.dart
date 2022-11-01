@@ -54,6 +54,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
             physics: const NeverScrollableScrollPhysics(),
             itemCount: list.length,
             itemBuilder: (BuildContext context, int index) {
+              //pegando os elementos dessa lista e colonado no FavoriteCard
               return FavoriteCard(fav: list[index]);
             },
           );
