@@ -1,4 +1,5 @@
 class FlashcardB{
+  //atribuição única para variáveis.
   final String question;
   final String answer;
 
