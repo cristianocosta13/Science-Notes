@@ -14,7 +14,7 @@ class FlashcardsPage extends StatefulWidget {
 
 class _FlashcardsPageState extends State<FlashcardsPage> {
   List<Flashcard> _flashcardBs = [
-    Flashcard(question: "O que é uma célula?", answer: " Unidades funcionais e estruturais dos seres vivos"),
+    Flashcard(question: "O que é uma célula?", answer: "Unidades funcionais e estruturais dos seres vivos"),
     Flashcard(question: "Qual animal tem listras?", answer: "Zebra"),
   ];
   int _currenIndex = 0;
