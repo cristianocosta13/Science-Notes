@@ -14,8 +14,6 @@ class ItemCardWidget extends StatefulWidget {
 
 class _ItemCardState extends State<ItemCardWidget> {
   bool checkValue = false;
-  int select = 1;
-  int isDone = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -62,11 +60,5 @@ class _ItemCardState extends State<ItemCardWidget> {
       ),
       color: Color(0xFFE0F2F1),
     );
-  }
-
-  void estaConcluido(ToDo afazer){
-    setState((){
-      afazer.isDone = 0;
-    });
   }
 }
