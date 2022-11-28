@@ -283,10 +283,187 @@ class Helper{
 
 
 
+    //videos de fisica
     sql =
-    "INSERT INTO VIDEO (id, url_image, title, duration, url_video, id_content) "
-        "VALUES (1, 'https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2019/10/aulas-enem-2.jpg',"
-        "'Vídeo Física', '25:40', 'https://www.youtube.com/watch?v=_6ILoTeChCE', 1);";
+    "INSERT INTO VIDEO (id, urlImage, tituloVideo, tempoDuracao, urlVideo, idContent) "
+        "VALUES (111, 'https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2019/10/aulas-enem-2.jpg',"
+        "'Vídeo Física', '25:40', 'https://www.youtube.com/watch?v=_6ILoTeChCE', 11);";
+    await db.execute(sql);
+
+    sql =
+    "INSERT INTO VIDEO (id, urlImage, tituloVideo, tempoDuracao, urlVideo, idContent) "
+        "VALUES (121, 'https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2019/10/aulas-enem-2.jpg',"
+        "'Vídeo Física', '25:40', 'https://www.youtube.com/watch?v=_6ILoTeChCE', 12);";
+    await db.execute(sql);
+
+    sql =
+    "INSERT INTO VIDEO (id, urlImage, tituloVideo, tempoDuracao, urlVideo, idContent) "
+        "VALUES (131, 'https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2019/10/aulas-enem-2.jpg',"
+        "'Vídeo Física', '25:40', 'https://www.youtube.com/watch?v=_6ILoTeChCE', 13);";
+    await db.execute(sql);
+
+    sql =
+    "INSERT INTO VIDEO (id, urlImage, tituloVideo, tempoDuracao, urlVideo, idContent) "
+        "VALUES (141, 'https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2019/10/aulas-enem-2.jpg',"
+        "'Vídeo Física', '25:40', 'https://www.youtube.com/watch?v=_6ILoTeChCE', 14);";
+    await db.execute(sql);
+
+    sql =
+    "INSERT INTO VIDEO (id, urlImage, tituloVideo, tempoDuracao, urlVideo, idContent) "
+        "VALUES (151, 'https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2019/10/aulas-enem-2.jpg',"
+        "'Vídeo Física', '25:40', 'https://www.youtube.com/watch?v=_6ILoTeChCE', 15);";
+    await db.execute(sql);
+
+    sql =
+    "INSERT INTO VIDEO (id, urlImage, tituloVideo, tempoDuracao, urlVideo, idContent) "
+        "VALUES (161, 'https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2019/10/aulas-enem-2.jpg',"
+        "'Vídeo Física', '25:40', 'https://www.youtube.com/watch?v=_6ILoTeChCE', 16);";
+    await db.execute(sql);
+
+    sql =
+    "INSERT INTO VIDEO (id, urlImage, tituloVideo, tempoDuracao, urlVideo, idContent) "
+        "VALUES (171, 'https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2019/10/aulas-enem-2.jpg',"
+        "'Vídeo Física', '25:40', 'https://www.youtube.com/watch?v=_6ILoTeChCE', 17);";
+    await db.execute(sql);
+
+    sql =
+    "INSERT INTO VIDEO (id, urlImage, tituloVideo, tempoDuracao, urlVideo, idContent) "
+        "VALUES (181, 'https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2019/10/aulas-enem-2.jpg',"
+        "'Vídeo Física', '25:40', 'https://www.youtube.com/watch?v=_6ILoTeChCE', 18);";
+    await db.execute(sql);
+
+    sql =
+    "INSERT INTO VIDEO (id, urlImage, tituloVideo, tempoDuracao, urlVideo, idContent) "
+        "VALUES (191, 'https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2019/10/aulas-enem-2.jpg',"
+        "'Vídeo Física', '25:40', 'https://www.youtube.com/watch?v=_6ILoTeChCE', 19);";
+    await db.execute(sql);
+
+    sql =
+    "INSERT INTO VIDEO (id, urlImage, tituloVideo, tempoDuracao, urlVideo, idContent) "
+        "VALUES (1101, 'https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2019/10/aulas-enem-2.jpg',"
+        "'Vídeo Física', '25:40', 'https://www.youtube.com/watch?v=_6ILoTeChCE', 110);";
+    await db.execute(sql);
+
+    //videos de quimica
+    sql =
+    "INSERT INTO VIDEO (id, urlImage, tituloVideo, tempoDuracao, urlVideo, idContent) "
+        "VALUES (211, 'https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2019/10/aulas-enem-2.jpg',"
+        "'Vídeo Química', '25:40', 'https://www.youtube.com/watch?v=_6ILoTeChCE', 21);";
+    await db.execute(sql);
+
+    sql =
+    "INSERT INTO VIDEO (id, urlImage, tituloVideo, tempoDuracao, urlVideo, idContent) "
+        "VALUES (221, 'https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2019/10/aulas-enem-2.jpg',"
+        "'Vídeo Química', '25:40', 'https://www.youtube.com/watch?v=_6ILoTeChCE', 22);";
+    await db.execute(sql);
+
+    sql =
+    "INSERT INTO VIDEO (id, urlImage, tituloVideo, tempoDuracao, urlVideo, idContent) "
+        "VALUES (231, 'https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2019/10/aulas-enem-2.jpg',"
+        "'Vídeo Química', '25:40', 'https://www.youtube.com/watch?v=_6ILoTeChCE', 23);";
+    await db.execute(sql);
+
+    sql =
+    "INSERT INTO VIDEO (id, urlImage, tituloVideo, tempoDuracao, urlVideo, idContent) "
+        "VALUES (241, 'https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2019/10/aulas-enem-2.jpg',"
+        "'Vídeo Química', '25:40', 'https://www.youtube.com/watch?v=_6ILoTeChCE', 24);";
+    await db.execute(sql);
+
+    sql =
+    "INSERT INTO VIDEO (id, urlImage, tituloVideo, tempoDuracao, urlVideo, idContent) "
+        "VALUES (251, 'https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2019/10/aulas-enem-2.jpg',"
+        "'Vídeo Química', '25:40', 'https://www.youtube.com/watch?v=_6ILoTeChCE', 25);";
+    await db.execute(sql);
+
+    sql =
+    "INSERT INTO VIDEO (id, urlImage, tituloVideo, tempoDuracao, urlVideo, idContent) "
+        "VALUES (261, 'https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2019/10/aulas-enem-2.jpg',"
+        "'Vídeo Química', '25:40', 'https://www.youtube.com/watch?v=_6ILoTeChCE', 26);";
+    await db.execute(sql);
+
+    sql =
+    "INSERT INTO VIDEO (id, urlImage, tituloVideo, tempoDuracao, urlVideo, idContent) "
+        "VALUES (271, 'https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2019/10/aulas-enem-2.jpg',"
+        "'Vídeo Química', '25:40', 'https://www.youtube.com/watch?v=_6ILoTeChCE', 27);";
+    await db.execute(sql);
+
+    sql =
+    "INSERT INTO VIDEO (id, urlImage, tituloVideo, tempoDuracao, urlVideo, idContent) "
+        "VALUES (281, 'https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2019/10/aulas-enem-2.jpg',"
+        "'Vídeo Química', '25:40', 'https://www.youtube.com/watch?v=_6ILoTeChCE', 28);";
+    await db.execute(sql);
+
+    sql =
+    "INSERT INTO VIDEO (id, urlImage, tituloVideo, tempoDuracao, urlVideo, idContent) "
+        "VALUES (291, 'https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2019/10/aulas-enem-2.jpg',"
+        "'Vídeo Química', '25:40', 'https://www.youtube.com/watch?v=_6ILoTeChCE', 29);";
+    await db.execute(sql);
+
+    sql =
+    "INSERT INTO VIDEO (id, urlImage, tituloVideo, tempoDuracao, urlVideo, idContent) "
+        "VALUES (2101, 'https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2019/10/aulas-enem-2.jpg',"
+        "'Vídeo Química', '25:40', 'https://www.youtube.com/watch?v=_6ILoTeChCE', 210);";
+    await db.execute(sql);
+
+    //videos de biologia
+    sql =
+    "INSERT INTO VIDEO (id, urlImage, tituloVideo, tempoDuracao, urlVideo, idContent) "
+        "VALUES (311, 'https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2019/10/aulas-enem-2.jpg',"
+        "'Vídeo Biologia', '25:40', 'https://www.youtube.com/watch?v=_6ILoTeChCE', 31);";
+    await db.execute(sql);
+
+    sql =
+    "INSERT INTO VIDEO (id, urlImage, tituloVideo, tempoDuracao, urlVideo, idContent) "
+        "VALUES (321, 'https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2019/10/aulas-enem-2.jpg',"
+        "'Vídeo Biologia', '25:40', 'https://www.youtube.com/watch?v=_6ILoTeChCE', 32);";
+    await db.execute(sql);
+
+    sql =
+    "INSERT INTO VIDEO (id, urlImage, tituloVideo, tempoDuracao, urlVideo, idContent) "
+        "VALUES (331, 'https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2019/10/aulas-enem-2.jpg',"
+        "'Vídeo Biologia', '25:40', 'https://www.youtube.com/watch?v=_6ILoTeChCE', 33);";
+    await db.execute(sql);
+
+    sql =
+    "INSERT INTO VIDEO (id, urlImage, tituloVideo, tempoDuracao, urlVideo, idContent) "
+        "VALUES (341, 'https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2019/10/aulas-enem-2.jpg',"
+        "'Vídeo Biologia', '25:40', 'https://www.youtube.com/watch?v=_6ILoTeChCE', 34);";
+    await db.execute(sql);
+
+    sql =
+    "INSERT INTO VIDEO (id, urlImage, tituloVideo, tempoDuracao, urlVideo, idContent) "
+        "VALUES (351, 'https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2019/10/aulas-enem-2.jpg',"
+        "'Vídeo Biologia', '25:40', 'https://www.youtube.com/watch?v=_6ILoTeChCE', 35);";
+    await db.execute(sql);
+
+    sql =
+    "INSERT INTO VIDEO (id, urlImage, tituloVideo, tempoDuracao, urlVideo, idContent) "
+        "VALUES (361, 'https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2019/10/aulas-enem-2.jpg',"
+        "'Vídeo Biologia', '25:40', 'https://www.youtube.com/watch?v=_6ILoTeChCE', 36);";
+    await db.execute(sql);
+
+    sql =
+    "INSERT INTO VIDEO (id, urlImage, tituloVideo, tempoDuracao, urlVideo, idContent) "
+        "VALUES (371, 'https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2019/10/aulas-enem-2.jpg',"
+        "'Vídeo Biologia', '25:40', 'https://www.youtube.com/watch?v=_6ILoTeChCE', 37);";
+    await db.execute(sql);
+
+    sql =
+    "INSERT INTO VIDEO (id, urlImage, tituloVideo, tempoDuracao, urlVideo, idContent) "
+        "VALUES (381, 'https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2019/10/aulas-enem-2.jpg',"
+        "'Vídeo Biologia', '25:40', 'https://www.youtube.com/watch?v=_6ILoTeChCE', 38);";
+    await db.execute(sql);
+
+    sql =
+    "INSERT INTO VIDEO (id, urlImage, tituloVideo, tempoDuracao, urlVideo, idContent) "
+        "VALUES (391, 'https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2019/10/aulas-enem-2.jpg',"
+        "'Vídeo Biologia', '25:40', 'https://www.youtube.com/watch?v=_6ILoTeChCE', 39);";
+    await db.execute(sql);
+
+    sql =
+    "INSERT INTO VIDEO (id, urlImage, tituloVideo, tempoDuracao, urlVideo, idContent) "
+        "VALUES (3101, 'https://guiadoestudante.abril.com.br/wp-content/uploads/sites/4/2019/10/aulas-enem-2.jpg',"
+        "'Vídeo Biologia', '25:40', 'https://www.youtube.com/watch?v=_6ILoTeChCE', 310);";
     await db.execute(sql);
 
 
