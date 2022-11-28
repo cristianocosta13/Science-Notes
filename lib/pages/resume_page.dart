@@ -1,6 +1,12 @@
-import 'package:flutter/material.dart';
+import 'package:sciencenotes/domain/resume.dart';
+import 'package:sciencenotes/pages/addResume.dart';
+import 'package:sciencenotes/data/resume_dao.dart';
 import 'package:sciencenotes/domain/content.dart';
-import 'package:highlight_text/highlight_text.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+import '../assets/colors/custom_colors.dart';
+import '../widgets/resume_card.dart';
 
 class ResumePage extends StatefulWidget {
   final Content content;
@@ -15,46 +21,7 @@ class ResumePage extends StatefulWidget {
 }
 
 class _ResumePageState extends State<ResumePage> {
-
-  String text = "O aplicativo Sciencenotes foi feito para ajudar pessoas com dificudade nos campos da ciência";
-
-  get children => null;
-
-  makeDialog(BuildContext context, String text){
-    showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            backgroundColor: Colors.purple.shade100,
-            content: Text(
-              text,
-              style: TextStyle(fontFamily: 'Abel-Regular'),
-            ),
-          );
-        }
-    );
-  }
-
-  Map<String, HighlightedWord> makewords(context) {
-    return {
-      "Sciencenotes ": HighlightedWord(
-        onTap: () {
-          makeDialog(context, text);
-        },
-        textStyle: const TextStyle(
-          color: Colors.purple,
-        ),
-      ),
-      "Tema": HighlightedWord(
-        onTap: () {
-          makeDialog(context, text);
-        },
-        textStyle: const TextStyle(
-          color: Colors.purple,
-        ),
-      ),
-    };
-  }
+  var list;
 
   @override
   Widget build(BuildContext context) {
@@ -63,53 +30,53 @@ class _ResumePageState extends State<ResumePage> {
       body: Padding(
         padding: const EdgeInsets.all(12.0),
         child: ListView(
-          children: [
-            Column(
-              children: [
-                //buildText(text: widget.content.resume.paragraph1),
-                const SizedBox(height: 8,),
-                //buildText(text: widget.content.resume.paragraph2),
-                const SizedBox(height: 8,),
-                Center(
-                  child: SizedBox(
-                    height: 400,
-                    width: 400,
-                    // child: Image.network(
-                    //   widget.content.resume.image,
-                    //   fit: BoxFit.contain,
-                    // ),
-                  ),
-                ),
-                //buildText(text: widget.content.resume.paragraph3),
-                const SizedBox(height: 8,),
-                //buildText(text: widget.content.resume.paragraph4),
-                TextHighlight(
-                  text: text,
-                  words: makewords(context),
-                  textStyle: const TextStyle(
-                    fontWeight: FontWeight.normal,
-                    fontSize: 16,
-                    color: Colors.black,
-                  ),
-                ),
-              ],
-            ),
-          ],
+          children: [buildListView()],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) {
+                return const AddResume();
+              },
+            ),
+          );
+          const Divider(
+              height: 30,
+              thickness: 5,
+              indent: 20,
+              endIndent: 0,
+              color: Colors.black);
+        },
+        child: const Icon(CupertinoIcons.add),
+        backgroundColor: Color(widget.content.colorButton),
       ),
     );
   }
 
-  Text buildText({
-    required String text,
-  }) {
-    return Text(
-      text,
-      style: const TextStyle(
-        fontFamily: 'Abel-Regular',
-        fontSize: 18,
-      ),
-      textAlign: TextAlign.justify,
+  buildListView() {
+    list = ResumeDao().selectDiscipline(widget.content);
+    return FutureBuilder<List<Resume>>(
+      future: list,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          // ?? -> Verificar ser o conteudo de snapshot.data é nulo
+          List<Resume> list = snapshot.data ?? [];
+
+          return ListView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: list.length,
+            itemBuilder: (BuildContext context, int index) {
+              return ResumeCard(resume: list[index]);
+            },
+          );
+        }
+
+        return const Center(child: CircularProgressIndicator());
+      },
     );
   }
 }
