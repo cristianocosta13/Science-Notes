@@ -1,11 +1,11 @@
-import 'package:sciencenotes/data/db_helper.dart';
+import 'package:sciencenotes/data/DBhelper.dart';
 import 'package:sciencenotes/domain/videos.dart';
 import 'package:sciencenotes/domain/content.dart';
 import 'package:sqflite/sqflite.dart';
 
 class VideosDao {
   Future<void> addVideo({required Videos video}) async {
-    DBHelper dbHelper = DBHelper();
+    Helper dbHelper = Helper();
     Database db = await dbHelper.initDB();
 
     await db.insert('video', video.toJson());
@@ -13,7 +13,7 @@ class VideosDao {
   }
 
   Future<List<Videos>> getLastId(int id) async {
-    DBHelper dbHelper = DBHelper();
+    Helper dbHelper = Helper();
     Database db = await dbHelper.initDB();
     String sql = 'SELECT *, MAX(id) FROM video WHERE idContent=? ;';
     final result = await db.rawQuery(sql, [id]);
@@ -39,7 +39,7 @@ class VideosDao {
   }
 
   Future<List<Videos>> listarVideosPhysical(Content content) async {
-    DBHelper dbHelper = DBHelper();
+    Helper dbHelper = Helper();
     Database db = await dbHelper.initDB();
 
     List<Videos> aux = <Videos>[];
@@ -69,7 +69,7 @@ class VideosDao {
   }
 
   Future<List<Videos>> listarVideosChemical(Content content) async {
-    DBHelper dbHelper = DBHelper();
+    Helper dbHelper = Helper();
     Database db = await dbHelper.initDB();
 
     List<Videos> lista = <Videos>[];
@@ -99,7 +99,7 @@ class VideosDao {
   }
 
   Future<List<Videos>> listarVideosBiology(Content content) async {
-    DBHelper dbHelper = DBHelper();
+    Helper dbHelper = Helper();
     Database db = await dbHelper.initDB();
 
     List<Videos> lista = <Videos>[];
