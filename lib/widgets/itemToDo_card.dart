@@ -32,11 +32,6 @@ class _ItemCardState extends State<ItemCardWidget> {
                     value: checkValue,
                     activeColor: CustomColors.appeButtonColor,
                     onChanged: (value) {
-                      if(value == true){
-                        select = 1;
-                      }else{
-                        select = 0;
-                      }
                       setState((){
                         checkValue = value!;
                       });
